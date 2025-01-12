@@ -12,7 +12,7 @@ root.style.setProperty('--grid-x-size', gridXSize);
 root.style.setProperty('--grid-y-size', gridYSize);
 
 let score = 0;
-let highScore = 0; //ACA DEBERIA OBTENERLO E ALGUN LADO
+let highScore = localStorage.getItem('highScore') || 0
 let setIntervalId;
 let gameOver=false;
 let playing = true; //Borrar variable si no se usa
@@ -35,6 +35,7 @@ const changeFoodPosition=() => {
 
 const handleGameOver=() => {
     clearInterval(setIntervalId);
+    localStorage.setItem('highScore', highScore);
     alert('Game Over');
     playing = false;
     location.reload();
